@@ -1,7 +1,27 @@
-@import 'styles/colors.scss'; 
+@import "styles/colors.scss";
+@import "styles/breakpoints.scss";
 
 #cards-container {
   background-color: $grey-100;
   margin: 0 auto;
   padding: 0 11px;
+}
+
+.filters-container {
+  display: flex;
+  gap: .5rem;
+  justify-content: flex-end;
+  padding: 0.75rem 0;
+  width: 100%;
+  @media screen and (min-width: $screen-md) {
+    gap: 1.5rem;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+  tr-select {
+    width: 100%;
+    @media screen and (min-width: $screen-md) {
+      width: auto;
+    }
+  }
 }

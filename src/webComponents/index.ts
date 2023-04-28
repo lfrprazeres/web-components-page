@@ -1,5 +1,7 @@
 import { Card } from './Card';
 import { Stars } from './Stars';
+import { Select } from './Select';
 
-customElements.define('stars-rate', Stars);
-customElements.define("card-container", Card);
+customElements.define('trstars-rate', Stars);
+customElements.define('tr-card', Card);
+customElements.define('tr-select', Select);

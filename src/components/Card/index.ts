@@ -51,14 +51,14 @@ export function createCard(root: string, props: CardProps): void {
   );
 
   $(`#${root}`).append(`
-    <card-container>
+    <tr-card>
       <img
         slot="image"
         src="${primaryImage?.url || images[0]?.url}"
         alt="${name}"
       />
       <h2 slot="name"> ${name} </h2>
-      <stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></stars-rate>
+      <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
       <p slot="description"> "${description}" </p>
       <p slot="operator"> ${operator_name} </p>
       <p slot="destinations"> ${twoFirstDestinations} </p>
@@ -70,6 +70,6 @@ export function createCard(root: string, props: CardProps): void {
       <p slot="firstAvailability" style="color: ${firstAvailabilityColor}"> ${firstAvailabilityText} </p>
       <p slot="secondDate"> ${secondDate} </p>
       <p slot="secondAvailability" style="color: ${secondAvailabilityColor}"> ${secondAvailabilityText} </p>
-    </card-container>
+    </tr-card>
   `);
 }
