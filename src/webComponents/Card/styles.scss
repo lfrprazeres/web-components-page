@@ -1,4 +1,5 @@
 @import "styles/colors.scss";
+@import "styles/breakpoints.scss";
 
 .card {
   &-container {
@@ -6,26 +7,74 @@
     flex-direction: column;
     margin: 0 auto 20px auto;
     width: 100%;
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      height: 210px;
+    }
   }
   &-image {
     max-height: 430px;
     max-width: 100%;
     overflow: hidden;
+    @media screen and (min-width: $screen-md) {
+      background-color: $grey-100;
+      max-height: none;
+      width: 320px;
+    }
+    ::slotted(img) {
+      width: 100%;
+      height: auto;
+    }
   }
-  &-description {
+  &-content {
     background-color: white;
     padding: 0.5rem 0.75rem 1.4rem 0.75rem;
+    @media screen and (min-width: $screen-md) {
+      display: flex;
+      flex: 2;
+      gap: 1rem;
+      padding: 1.2rem 0.75rem 1.4rem 1.1rem;
+    }
+  }
+  &-description {
+    flex: 6;
     &-title {
-      font-size: .9rem;
+      font-size: 0.9rem;
+      @media screen and (min-width: $screen-md) {
+        font-size: 0.75rem;
+      }
     }
     &-stars {
       margin-top: 15px;
+      @media screen and (min-width: $screen-md) {
+        margin-top: 4px;
+      }
+    }
+    &-text {
+      color: $grey-900;
+      display: none;
+      font-size: 0.7rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+      max-width: 100%;
+      ::slotted(*) {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      @media screen and (min-width: $screen-md) {
+        display: block;
+      }
     }
   }
   &-details {
     border-top: 1px solid $grey-100;
     margin-top: 1rem;
-    padding-top: 1.2rem;
+    padding-top: 1rem;
+    @media screen and (min-width: $screen-md) {
+      margin-top: 1.5rem;
+    }
     &-item {
       align-items: flex-start;
       display: flex;
@@ -35,79 +84,126 @@
         color: $grey-400;
         font-size: .8rem;
         flex: 1;
-        margin: 0 0 .5rem 0;
+        margin: 0 0 0.5rem 0;
+        @media screen and (min-width: $screen-md) {
+          font-size: .6rem
+        }
       }
       &--operator {
         color: $grey-900;
         display: flex;
         font-size: .8rem;
-        gap: .5rem;
+        gap: 0.5rem;
         flex: 1;
+        @media screen and (min-width: $screen-md) {
+          font-size: .6rem
+        }
       }
       &--moreDestinations {
         color: $blue;
       }
     }
   }
-  &-values {
+  &-actions {
     display: flex;
+    flex: 4;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
-    margin-top: 1rem;
-    &-duration {
-      color: $grey-400;
-      flex: 1;
-      font-size: .8rem;
-      h3 {
-        margin-bottom: 0;
+    @media screen and (min-width: $screen-md) {
+      flex-wrap: nowrap;
+    }
+    &-values {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 1rem;
+      @media screen and (min-width: $screen-md) {
+        margin-top: .5rem;
       }
-      &--slot {
-        color: black;
-        font-size: 1.2rem;
+      &--duration {
+        color: $grey-400;
+        flex: 1;
+        font-size: 0.8rem;
+        h3 {
+          margin-bottom: 0;
+          @media screen and (min-width: $screen-md) {
+            margin-bottom: .2rem;
+            margin-top: 0;
+            font-size: .75rem;
+          }
+        }
+        ::slotted(*) {
+          color: black;
+          font-size: 1.2rem;
+          font-weight: bold;
+          @media screen and (min-width: $screen-md) {
+            font-size: 1rem;
+          }
+        }
+      }
+      &--from {
+        flex: 1;
+        h3 {
+          color: $grey-900;
+          font-size: 1.1rem;
+          font-weight: 400;
+          margin-top: 0.75rem;
+          margin-bottom: 0.3rem;
+          @media screen and (min-width: $screen-md) {
+            font-size: 1rem;
+            margin-top: 0;
+          }
+        }
+        ::slotted(*) {
+          color: $green;
+          font-size: 2rem;
+          font-weight: bold;
+          @media screen and (min-width: $screen-md) {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+    &-dates {
+      border-top: 1px solid $grey-100;
+      display: flex;
+      margin-bottom: 0.85rem;
+      margin-top: 0.6rem;
+      padding-top: 0.9rem;
+      &--item {
+        flex: 1;
+        margin-left: 0.3rem;
+      }
+      &--date {
+        color: $grey-400;
+        font-size: 0.75rem;
         font-weight: bold;
+        @media screen and (min-width: $screen-md) {
+          font-size: .65rem;
+        }
+      }
+      &--availability {
+        ::slotted(*) {
+          @media screen and (min-width: $screen-md) {
+            font-size: .85rem;
+          }
+        }
       }
     }
-    &-from {
-      flex: 1;
-      h3 {
-        color: $grey-900;
-        font-size: 1.1rem;
-        font-weight: 400;
-        margin-top: .75rem;
-        margin-bottom: .3rem;
-      }
-      &--slot {
-        color: $green;
-        font-size: 2rem;
-        font-weight: bold;
-      }
-    }
-  }
-  &-dates {
-    border-top: 1px solid $grey-100;
-    display: flex;
-    margin-bottom: .85rem;
-    margin-top: .6rem;
-    padding-top: .9rem;
-    &-item {
-      flex: 1;
-      margin-left: .3rem;
-    }
-    &-date {
-      color: $grey-400;
-      font-size: .75rem;
+    &-button {
+      background-color: $yellow-700;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
       font-weight: bold;
+      height: 50px;
+      width: 100%;
+      @media screen and (min-width: $screen-md) {
+        height: 42px;
+      }
     }
-  }
-  &-button {
-    background-color: $yellow-700;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: bold;
-    height: 50px;
-    width: 100%;
   }
 }

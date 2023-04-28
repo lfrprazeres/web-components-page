@@ -7,8 +7,5 @@ export async function renderSearchPage() {
   const cardsContainer = document.createElement("div");
   $(cardsContainer).attr("id", "cards-container");
   $("#container").append(cardsContainer);
-  for (const card of data) {
-    console.log("card: ", card);
-    createCard("cards-container", card);
-  }
+  for (const card of data) { createCard("cards-container", card); }
 }

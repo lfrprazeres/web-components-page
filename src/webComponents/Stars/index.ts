@@ -37,8 +37,7 @@ export class Stars extends HTMLElement {
     const reviews = this.getAttribute('reviews');
     const reviewsElement = document.createElement('span');
     $(reviewsElement).attr('class', 'reviews')
-    // reviewsElement.innerHTML = `${reviews} reviews`;
-    reviewsElement.innerHTML = `427 reviews`;
+    reviewsElement.innerHTML = `${reviews} reviews`;
     this.shadowRoot.querySelector('.stars-container').appendChild(reviewsElement);
   }
 }
