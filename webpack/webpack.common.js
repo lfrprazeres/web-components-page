@@ -14,6 +14,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: [path.resolve(__dirname, '..', 'src'), 'node_modules']
   },
   module: {
     rules: [
@@ -27,7 +28,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(css)$/i,
+        test: /\.(s[ac]ss|css)$/i,
+        exclude: [
+          path.resolve(__dirname, '..', 'src', 'webComponents')
+        ],
         use: [
           "style-loader",
           "css-loader",
@@ -36,6 +40,9 @@ module.exports = {
       },
       {
         test: /\.(s[ac]ss)$/i,
+        include: [
+          path.resolve(__dirname, '..', 'src', 'webComponents')
+        ],
         use: [
           "raw-loader",
           {

@@ -1,0 +1,16 @@
+@import 'styles/colors.scss';
+
+.star {
+  color: #ffc003;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+.reviews {
+  color: $grey-400;
+  margin-left: 8px;
+}
