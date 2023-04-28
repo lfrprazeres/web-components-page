@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: path.resolve(__dirname, '..', 'src', 'index.ts'),
+  entry: [
+    path.resolve(__dirname, '..', 'src', 'webComponents', 'index.ts'),
+    path.resolve(__dirname, '..', 'src', 'index.ts')
+  ],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '..', 'dist'),
@@ -15,16 +18,34 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
+      {
         test: /.ts$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css)$/i,
         use: [
           "style-loader",
           "css-loader",
           "sass-loader",
+        ],
+      },
+      {
+        test: /\.(s[ac]ss)$/i,
+        use: [
+          "raw-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'node_modules')]
+              }
+            }
+          }
         ],
       },
     ],
