@@ -6,7 +6,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: "numeric",
 };
 
-const handleAvailability = (availability: number): string[] => ([
+const handleAvailability = (availability: number = 0): string[] => ([
   `${availability > 10 ? '10+' : availability} ${availability !== 1 ? 'spaces left' : 'space left'}`,
   `${availability <= 5 ? 'red' : 'black'}`
 ]);
@@ -34,18 +34,18 @@ export function createCard(root: string, props: CardProps): void {
 
   const firstDateData = dates[0];
   const [firstAvailabilityText, firstAvailabilityColor] = handleAvailability(
-    firstDateData.availability
+    firstDateData?.availability
   );
-  const firstDate = new Date(firstDateData.start).toLocaleDateString(
+  const firstDate = new Date(firstDateData?.start).toLocaleDateString(
     "de-AT",
     dateOptions
   );
 
   const secondDateData = dates[1];
   const [secondAvailabilityText, secondAvailabilityColor] = handleAvailability(
-    secondDateData.availability
+    secondDateData?.availability
   );
-  const secondDate = new Date(secondDateData.start).toLocaleDateString(
+  const secondDate = new Date(secondDateData?.start).toLocaleDateString(
     "de-AT",
     dateOptions
   );
@@ -65,10 +65,10 @@ export function createCard(root: string, props: CardProps): void {
       <span slot="more-destinations">+${moreDestinations} more</span>
       <p slot="starts-ends">${firstDestination} / ${lastDestination}</p>
       <p slot="duration"> ${length} day${length === 1 ? "" : "s"} </p>
-      <p slot="from"> €${firstDateData.eur} </p>
-      <p slot="firstDate"> ${firstDate} </p>
+      <p slot="from"> ${firstDateData?.eur ? "€" + firstDateData.eur : ""} </p>
+      <p slot="firstDate"> ${firstDate || ''} </p>
       <p slot="firstAvailability" style="color: ${firstAvailabilityColor}"> ${firstAvailabilityText} </p>
-      <p slot="secondDate"> ${secondDate} </p>
+      <p slot="secondDate"> ${secondDate || ''} </p>
       <p slot="secondAvailability" style="color: ${secondAvailabilityColor}"> ${secondAvailabilityText} </p>
     </tr-card>
   `);
