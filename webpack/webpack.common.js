@@ -6,8 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     normalize: path.resolve(__dirname, '..', 'src', 'normalize.css'),
-    webComponents: path.resolve(__dirname, '..', 'src', 'webComponents', 'index.ts'),
     index: path.resolve(__dirname, '..', 'src', 'index.ts'),
+    cardList: path.resolve(__dirname, '..', 'src', 'webComponents', 'CardList', 'index.ts'),
+    card: path.resolve(__dirname, '..', 'src', 'webComponents', 'Card', 'index.ts'),
+    select: path.resolve(__dirname, '..', 'src', 'webComponents', 'Select', 'index.ts'),
+    stars: path.resolve(__dirname, '..', 'src', 'webComponents', 'Stars', 'index.ts'),
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -72,10 +75,6 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', 'public', 'index.html'),
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
     })
   ],
 }

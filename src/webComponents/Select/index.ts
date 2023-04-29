@@ -19,3 +19,5 @@ export class Select extends HTMLElement {
     this.shadowRoot.querySelector("h2").append(this.getAttribute("label"));
   }
 }
+
+customElements.define('tr-select', Select);

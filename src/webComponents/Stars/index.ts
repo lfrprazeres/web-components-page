@@ -21,7 +21,7 @@ export class Stars extends HTMLElement {
     Array.from({ length: 5 }, (_, index) => {
       const id = index + 1;
       const star = document.createElement('div');
-      $(star).attr('class', 'star').css('max-width', '20px');
+      star.classList.add('star');
       let currentSvg = fillStar;
       if (id > rating) currentSvg = outlineStar;
 
@@ -34,8 +34,10 @@ export class Stars extends HTMLElement {
     });
     const reviews = this.getAttribute('reviews');
     const reviewsElement = document.createElement('span');
-    $(reviewsElement).attr('class', 'reviews');
+    reviewsElement.classList.add('reviews');
     reviewsElement.innerHTML = `${reviews} reviews`;
     this.shadowRoot.querySelector('.stars-container').appendChild(reviewsElement);
   }
 }
+
+customElements.define('tr-stars-rate', Stars);

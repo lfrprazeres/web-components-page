@@ -6,12 +6,18 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: "numeric",
 };
 
-const handleAvailability = (availability: number = 0): string[] => ([
-  `${availability > 10 ? '10+' : availability} ${availability !== 1 ? 'spaces left' : 'space left'}`,
-  `${availability <= 5 ? 'red' : 'black'}`
-]);
+const handleAvailability = (availability: number = 0): string[] => [
+  `${availability > 10 ? "10+" : availability} ${
+    availability !== 1 ? "spaces left" : "space left"
+  }`,
+  `${availability <= 5 ? "red" : "black"}`,
+];
 
-export function createCard(root: Element, props: CardProps, show?: boolean): void {
+export function createCard(
+  root: Element,
+  props: CardProps,
+  show?: boolean
+): void {
   const {
     name,
     images,
@@ -21,7 +27,7 @@ export function createCard(root: Element, props: CardProps, show?: boolean): voi
     cities,
     length,
     dates,
-    description
+    description,
   } = props;
 
   const primaryImage = images.find((image: CardImage) => image.is_primary);
@@ -49,7 +55,7 @@ export function createCard(root: Element, props: CardProps, show?: boolean): voi
     "de-AT",
     dateOptions
   );
-  $(root).append(`
+  root.innerHTML += `
     <tr-card
       show="${show || true}"
       name="${name}"
@@ -71,10 +77,10 @@ export function createCard(root: Element, props: CardProps, show?: boolean): voi
       <p slot="starts-ends">${firstDestination} / ${lastDestination}</p>
       <p slot="duration"> ${length} day${length === 1 ? "" : "s"} </p>
       <p slot="from"> ${firstDateData?.eur ? "€" + firstDateData.eur : ""} </p>
-      <p slot="firstDate"> ${firstDate || ''} </p>
+      <p slot="firstDate"> ${firstDate || ""} </p>
       <p slot="firstAvailability" style="color: ${firstAvailabilityColor}"> ${firstAvailabilityText} </p>
-      <p slot="secondDate"> ${secondDate || ''} </p>
+      <p slot="secondDate"> ${secondDate || ""} </p>
       <p slot="secondAvailability" style="color: ${secondAvailabilityColor}"> ${secondAvailabilityText} </p>
     </tr-card>
-  `);
+  `;
 }

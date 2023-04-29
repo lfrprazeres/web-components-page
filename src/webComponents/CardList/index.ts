@@ -1,7 +1,7 @@
 import { getSearchResults } from "services/searchPage";
 import { createCard } from "components/Card";
 import cardListTemplate from "./template.html";
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 const template = document.createElement("template");
 
@@ -43,57 +43,63 @@ export class CardList extends HTMLElement {
       .querySelector("#sortBy")
       .shadowRoot.querySelector("select");
 
-    $(filterBySelect).append(filterByOptions);
+    filterBySelect.innerHTML += filterByOptions;
     const cardsContainer = this.shadowRoot.querySelector("#cards-container");
-    $(cardsContainer).empty();
+
+    cardsContainer.textContent = "";
     for (const card of data) {
       createCard(cardsContainer, card);
     }
 
-    $(sortBySelect).on("change", (event) => {
-      const sortType = event.target.value;
-      const cards = $(this.shadowRoot).find("tr-card");
-      const sortedCards = Array.prototype.sort.call(
-        cards,
-        (a: HTMLElement, b: HTMLElement) => {
-          if (sortType === "") {
-            const aReviews = parseFloat($(a).attr("reviews"));
-            const bReviews = parseFloat($(b).attr("reviews"));
-            return aReviews < bReviews ? 1 : -1;
-          }
-          if (["lowest", "highest"].includes(sortType)) {
-            const aPrice = parseFloat($(a).attr("price"));
-            const bPrice = parseFloat($(b).attr("price"));
+    sortBySelect.addEventListener("change", (event: Event) => {
+      const sortType = (event.target as HTMLSelectElement).value;
+      const cards = [...this.shadowRoot.querySelectorAll("tr-card")];
+      const sortedCards = cards.sort((a: Element, b: Element) => {
+        switch (sortType) {
+          case "lowest":
+          case "highest":
+            const aPrice = parseFloat(a.getAttribute("price"));
+            const bPrice = parseFloat(b.getAttribute("price"));
             if (sortType === "lowest") return aPrice > bPrice ? 1 : -1;
             if (sortType === "highest") return aPrice < bPrice ? 1 : -1;
-          }
-          if (["longest", "shortest"].includes(sortType)) {
-            const aTour = parseFloat($(a).attr("tour"));
-            const bTour = parseFloat($(b).attr("tour"));
+            break;
+          case "longest":
+          case "shortest":
+            const aTour = parseFloat(a.getAttribute("tour"));
+            const bTour = parseFloat(b.getAttribute("tour"));
             if (sortType === "longest") return aTour < bTour ? 1 : -1;
             if (sortType === "shortest") return aTour > bTour ? 1 : -1;
-          }
+            break;
+          default:
+            const aReviews = parseFloat(a.getAttribute("reviews"));
+            const bReviews = parseFloat(b.getAttribute("reviews"));
+            return aReviews < bReviews ? 1 : -1;
         }
-      );
-      $(this.shadowRoot.querySelector("#cards-container")).append(sortedCards);
-    });
-    $(filterBySelect).on("change", (event) => {
-      $(this.shadowRoot)
-        .find("tr-card")
-        .each((_, element) => {
-          if (event.target.value === "") {
-            $(element).attr("show", "true");
-            return;
-          }
-          const cardName = $(element).attr("name");
-          const currentData = data.find((card) => card.name === cardName);
-          const someDeparture = currentData.dates.some((date) => {
-            const formatedDate = formatDate(new Date(date.start));
-            return formatedDate === event.target.value;
-          });
+      });
 
-          $(element).attr("show", String(someDeparture));
+      for (const card of sortedCards) {
+        this.shadowRoot.querySelector("#cards-container").append(card);
+      }
+    });
+
+    filterBySelect.addEventListener("change", (event) => {
+      const filterValue = (event.target as HTMLSelectElement).value;
+      const cards = [...this.shadowRoot.querySelectorAll("tr-card")];
+      cards.forEach((element) => {
+        if (filterValue === "") {
+          element.setAttribute('show', 'true');
+          return;
+        }
+        const cardName = element.getAttribute("name");
+        const currentData = data.find((card) => card.name === cardName);
+        const someDeparture = currentData.dates.some((date) => {
+          const formatedDate = formatDate(new Date(date.start));
+          return formatedDate === filterValue;
         });
+        element.setAttribute('show', String(someDeparture));
+      });
     });
   }
 }
+
+customElements.define("tr-card-list", CardList);

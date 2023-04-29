@@ -29,3 +29,5 @@ export class Card extends HTMLElement {
     }
   }
 }
+
+customElements.define('tr-card', Card);
