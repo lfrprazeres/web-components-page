@@ -1,20 +1,22 @@
 @import 'styles/colors.scss';
 @import 'styles/breakpoints.scss';
 
-.star {
-  color: $yellow-500;
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  &:not(:last-child) {
-    margin-right: 3px;
-    @media screen and (min-width: $screen-md) {
-      margin-right: 0px;
-    }
-  }
-  @media screen and (min-width: $screen-md) {
+.stars-container {
+  svg {
+    color: $yellow-500;
+    display: inline-block;
     width: 15px;
     height: 15px;
+    &:not(:last-child) {
+      margin-right: 3px;
+      @media screen and (min-width: $screen-md) {
+        margin-right: 0px;
+      }
+    }
+    @media screen and (min-width: $screen-md) {
+      width: 15px;
+      height: 15px;
+    }
   }
 }
 

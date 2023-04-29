@@ -20,8 +20,6 @@ export class Stars extends HTMLElement {
     this.shadowRoot.appendChild(stars);
     Array.from({ length: 5 }, (_, index) => {
       const id = index + 1;
-      const star = document.createElement('div');
-      star.classList.add('star');
       let currentSvg = fillStar;
       if (id > rating) currentSvg = outlineStar;
 
@@ -29,8 +27,7 @@ export class Stars extends HTMLElement {
         currentSvg = halfStar
       };
       
-      star.innerHTML = currentSvg;
-      this.shadowRoot.querySelector('.stars-container').appendChild(star);
+      this.shadowRoot.querySelector('.stars-container').innerHTML += currentSvg;
     });
     const reviews = this.getAttribute('reviews');
     const reviewsElement = document.createElement('span');

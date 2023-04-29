@@ -6,5 +6,5 @@ module.exports = Object.assign(common, {
     splitChunks: {
       chunks: 'all',
     }
-  }
+  },
 }) 

@@ -44,12 +44,6 @@
         font-size: 0.75rem;
       }
     }
-    &-stars {
-      margin-top: 15px;
-      @media screen and (min-width: $screen-md) {
-        margin-top: 4px;
-      }
-    }
     &-text {
       color: $grey-900;
       display: none;
@@ -63,8 +57,10 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
+      margin-top: 15px;
       @media screen and (min-width: $screen-md) {
         display: block;
+        margin-top: 4px;
       }
     }
   }

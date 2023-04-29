@@ -4,19 +4,12 @@
   </div>
   <div class="card-content">
     <div class="card-description">
-      <slot
-        name="name"
-        class="card-description-title"
-      >
+      <slot name="name" class="card-description-title">
         <div class="skeleton skeleton-text"> </div>
       </slot>
-      <div class="card-description-stars">
-        <slot name="stars"></slot>
-      </div>
+      <slot name="stars"></slot>
       <div class="card-description-text">
-        <slot
-          name="description"
-        ></slot>
+        <slot name="description"></slot>
       </div>
       <div class="card-details">
         <div class="card-details-item">
@@ -27,30 +20,24 @@
             <slot name="destinations">
               <div class="skeleton skeleton-text"></div>
             </slot>
-            <div class="card-details-item--moreDestinations">
-              <slot name="more-destinations"></slot>
-            </div>
+            <slot name="more-destinations" class="card-details-item--moreDestinations"></slot>
           </div>
         </div>
         <div class="card-details-item">
           <h3>
             STARTS/ ENDS IN
           </h3>
-          <div class="card-details-item--operator">
-            <slot name="starts-ends">
-              <div class="skeleton skeleton-text"></div>
-            </slot>
-          </div>
+          <slot name="starts-ends" class="card-details-item--operator">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
         </div>
         <div class="card-details-item">
           <h3>
             OPERATOR
           </h3>
-          <div class="card-details-item--operator">
-            <slot name="operator">
-              <div class="skeleton skeleton-text"></div>
-            </slot>
-          </div>
+          <slot name="operator" class="card-details-item--operator">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
         </div>
       </div>
     </div>
@@ -71,20 +58,12 @@
       </div>
       <div class="card-actions-dates">
         <div class="card-actions-dates--item">
-          <div class="card-actions-dates--date">
-            <slot name="firstDate"> </slot>
-          </div>
-          <div class="card-actions-dates--availability">
-            <slot name="firstAvailability"></slot>
-          </div>
+          <slot name="firstDate" class="card-actions-dates--date"> </slot>
+          <slot name="firstAvailability" class="card-actions-dates--availability"></slot>
         </div>
         <div class="card-actions-dates--item">
-          <div class="card-actions-dates--date">
-            <slot name="secondDate"></slot>
-          </div>
-          <div class="card-actions-dates--availability">
-            <slot name="secondAvailability"></slot>
-          </div>
+          <slot name="secondDate" class="card-actions-dates--date"></slot>
+          <slot name="secondAvailability" class="card-actions-dates--availability"></slot>
         </div>
       </div>
       <button class="card-actions-button">

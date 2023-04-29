@@ -33,7 +33,7 @@ export class CardList extends HTMLElement {
         (filteredDate) =>
           `<option value="${filteredDate}">${filteredDate}</option>`
       )
-      .join();
+      .join('');
 
     const filterBySelect = this.shadowRoot
       .querySelector("#filterBy")
