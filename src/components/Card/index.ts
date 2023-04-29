@@ -11,7 +11,7 @@ const handleAvailability = (availability: number = 0): string[] => ([
   `${availability <= 5 ? 'red' : 'black'}`
 ]);
 
-export function createCard(root: string, props: CardProps): void {
+export function createCard(root: string, props: CardProps, show?: boolean): void {
   const {
     name,
     images,
@@ -49,9 +49,14 @@ export function createCard(root: string, props: CardProps): void {
     "de-AT",
     dateOptions
   );
-
   $(`#${root}`).append(`
-    <tr-card>
+    <tr-card
+      show="${show || true}"
+      name="${name}"
+      price="${firstDateData?.eur || 0}"
+      tour="${length}"
+      reviews="${reviews}"
+    >
       <img
         slot="image"
         src="${primaryImage?.url || images[0]?.url}"

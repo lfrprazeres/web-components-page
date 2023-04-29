@@ -1,17 +1,21 @@
 @import "styles/colors.scss";
 @import "styles/breakpoints.scss";
 
-#cards-container {
+#cards-container, .filters-container {
   background-color: $grey-100;
   margin: 0 auto;
   padding: 0 11px;
+}
+
+#cards-container {
+  height: 100%;
 }
 
 .filters-container {
   display: flex;
   gap: .5rem;
   justify-content: flex-end;
-  padding: 0.75rem 0;
+  padding: 0.75rem 11px 0.75rem 11px;
   width: 100%;
   @media screen and (min-width: $screen-md) {
     gap: 1.5rem;

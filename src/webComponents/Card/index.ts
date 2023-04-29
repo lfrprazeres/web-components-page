@@ -104,4 +104,16 @@ export class Card extends HTMLElement {
     const card = cardTemplate.content.cloneNode(true);
     shadow.append(card);
   }
+
+  static get observedAttributes() { 
+    return ['show']; 
+  }
+
+  attributeChangedCallback(attrName: string, oldValue: string, newValue: string) {
+    if (oldValue === newValue) return;
+
+    if(attrName === 'show') {
+      this.style.display = newValue === 'true' ? 'block' : 'none';
+    }
+  }
 }

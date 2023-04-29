@@ -53,7 +53,7 @@
     &-text {
       color: $grey-900;
       display: none;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-style: italic;
       margin-top: 0.5rem;
       max-width: 100%;
@@ -86,7 +86,7 @@
         flex: 1;
         margin: 0 0 0.5rem 0;
         @media screen and (min-width: $screen-md) {
-          font-size: .6rem
+          font-size: .7rem
         }
       }
       &--operator {
@@ -96,7 +96,7 @@
         gap: 0.5rem;
         flex: 1;
         @media screen and (min-width: $screen-md) {
-          font-size: .6rem
+          font-size: .7rem
         }
       }
       &--moreDestinations {
