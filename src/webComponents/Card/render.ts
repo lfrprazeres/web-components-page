@@ -71,7 +71,7 @@ export function createCard(
           src="${currentImageURL}"
           alt="${name}"
         />`
-        : ""
+        : `<span slot="image" ></span>`
       }
       <h2 slot="name"> ${name} </h2>
       <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
