@@ -57,36 +57,38 @@ export function createCard(
   );
   const currentImageURL = primaryImage?.url || images[0]?.url;
 
-  root.innerHTML += `
-    <tr-card
-      show="${show || true}"
-      name="${name}"
-      price="${firstDateData?.eur || 0}"
-      tour="${length}"
-      reviews="${reviews || 0}"
-    >
-      ${currentImageURL
+  const cardElement = document.createElement("tr-card");
+
+  cardElement.setAttribute("show", `${show || true}`);
+  cardElement.setAttribute("name", `${name}`);
+  cardElement.setAttribute("price", `${firstDateData?.eur || 0}`);
+  cardElement.setAttribute("tour", `${length}`);
+  cardElement.setAttribute("reviews", `${reviews || 0}`);
+  cardElement.innerHTML = `
+    ${
+      currentImageURL
         ? `<img
-          slot="image"
-          src="${currentImageURL}"
-          alt="${name}"
-          loading="lazy"
-        />`
+        slot="image"
+        src="${currentImageURL}"
+        alt="${name}"
+        loading="lazy"
+      />`
         : `<span slot="image" ></span>`
-      }
-      <h2 slot="name"> ${name} </h2>
-      <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
-      <p slot="description"> "${description}" </p>
-      <p slot="operator"> ${operator_name} </p>
-      <p slot="destinations"> ${twoFirstDestinations} </p>
-      <span slot="more-destinations">+${moreDestinations} more</span>
-      <p slot="starts-ends">${firstDestination} / ${lastDestination}</p>
-      <p slot="duration"> ${length} day${length === 1 ? "" : "s"} </p>
-      <p slot="from"> ${firstDateData?.eur ? "€" + firstDateData.eur : ""} </p>
-      <p slot="firstDate"> ${firstDate || ""} </p>
-      <p slot="firstAvailability" style="color: ${firstAvailabilityColor}"> ${firstAvailabilityText} </p>
-      <p slot="secondDate"> ${secondDate || ""} </p>
-      <p slot="secondAvailability" style="color: ${secondAvailabilityColor}"> ${secondAvailabilityText} </p>
-    </tr-card>
+    }
+    <h2 slot="name"> ${name} </h2>
+    <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
+    <p slot="description"> "${description}" </p>
+    <p slot="operator"> ${operator_name} </p>
+    <p slot="destinations"> ${twoFirstDestinations} </p>
+    <span slot="more-destinations">+${moreDestinations} more</span>
+    <p slot="starts-ends">${firstDestination} / ${lastDestination}</p>
+    <p slot="duration"> ${length} day${length === 1 ? "" : "s"} </p>
+    <p slot="from"> ${firstDateData?.eur ? "€" + firstDateData.eur : ""} </p>
+    <p slot="firstDate"> ${firstDate || ""} </p>
+    <p slot="firstAvailability" style="color: ${firstAvailabilityColor}"> ${firstAvailabilityText} </p>
+    <p slot="secondDate"> ${secondDate || ""} </p>
+    <p slot="secondAvailability" style="color: ${secondAvailabilityColor}"> ${secondAvailabilityText} </p>
   `;
+
+  root.appendChild(cardElement);
 }

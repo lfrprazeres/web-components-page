@@ -1,7 +1,7 @@
 <div class="card-container">
   <div class="card-image">
     <slot name="image">
-      <div class="skeleton skeleton-body"></div>
+      <div class="skeleton skeleton-image"></div>
     </slot>
   </div>
   <div class="card-content">
@@ -19,9 +19,7 @@
             DESTINATIONS
           </h3>
           <div class="card-details-item--operator">
-            <slot name="destinations">
-              <div class="skeleton skeleton-text"></div>
-            </slot>
+            <slot name="destinations"></slot>
             <slot name="more-destinations" class="card-details-item--moreDestinations"></slot>
           </div>
         </div>
@@ -29,17 +27,13 @@
           <h3>
             STARTS/ ENDS IN
           </h3>
-          <slot name="starts-ends" class="card-details-item--operator">
-            <div class="skeleton skeleton-text"></div>
-          </slot>
+          <slot name="starts-ends" class="card-details-item--operator"></slot>
         </div>
         <div class="card-details-item">
           <h3>
             OPERATOR
           </h3>
-          <slot name="operator" class="card-details-item--operator">
-            <div class="skeleton skeleton-text"></div>
-          </slot>
+          <slot name="operator" class="card-details-item--operator"> </slot>
         </div>
       </div>
     </div>
@@ -49,23 +43,35 @@
           <h3>
             Duration
           </h3>
-          <slot name="duration"></slot>
+          <slot name="duration">
+            <p> 0 days </p>
+          </slot>
         </div>
         <div class="card-actions-values--from">
           <h3>
             From
           </h3>
-          <slot name="from"></slot>
+          <slot name="from">
+            <p> € </p>
+          </slot>
         </div>
       </div>
       <div class="card-actions-dates">
         <div class="card-actions-dates--item">
-          <slot name="firstDate" class="card-actions-dates--date"> </slot>
-          <slot name="firstAvailability" class="card-actions-dates--availability"></slot>
+          <slot name="firstDate" class="card-actions-dates--date">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
+          <slot name="firstAvailability" class="card-actions-dates--availability">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
         </div>
         <div class="card-actions-dates--item">
-          <slot name="secondDate" class="card-actions-dates--date"></slot>
-          <slot name="secondAvailability" class="card-actions-dates--availability"></slot>
+          <slot name="secondDate" class="card-actions-dates--date">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
+          <slot name="secondAvailability" class="card-actions-dates--availability">
+            <div class="skeleton skeleton-text"></div>
+          </slot>
         </div>
       </div>
       <button class="card-actions-button">
