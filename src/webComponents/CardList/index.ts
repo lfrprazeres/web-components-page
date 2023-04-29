@@ -1,5 +1,5 @@
 import { getSearchResults } from "services/searchPage";
-import { createCard } from "components/Card";
+import { createCard } from "../Card/render";
 import cardListTemplate from "./template.html";
 import styles from "./styles.scss";
 
