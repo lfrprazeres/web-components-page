@@ -4,8 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    normalize: path.resolve(__dirname, '..', 'src', 'normalize.css'),
-    index: path.resolve(__dirname, '..', 'src', 'index.ts'),
+    normalize: path.resolve(__dirname, '..', 'src', 'normalize.scss'),
     cardList: path.resolve(__dirname, '..', 'src', 'webComponents', 'CardList', 'index.ts'),
     card: path.resolve(__dirname, '..', 'src', 'webComponents', 'Card', 'index.ts'),
     select: path.resolve(__dirname, '..', 'src', 'webComponents', 'Select', 'index.ts'),

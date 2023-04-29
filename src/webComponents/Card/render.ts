@@ -61,7 +61,7 @@ export function createCard(
       name="${name}"
       price="${firstDateData?.eur || 0}"
       tour="${length}"
-      reviews="${reviews}"
+      reviews="${reviews || 0}"
     >
       <img
         slot="image"
