@@ -47,8 +47,10 @@ export class CardList extends HTMLElement {
     const cardsContainer = this.shadowRoot.querySelector("#cards-container");
 
     cardsContainer.textContent = "";
-    for (const card of data) {
-      createCard(cardsContainer, card);
+    for (const [index, card] of Object.entries(data)) {
+      setTimeout(() => {
+        createCard(cardsContainer, card);
+      }, Math.floor(Number(index) / 4) * 1000);
     }
 
     sortBySelect.addEventListener("change", (event: Event) => {

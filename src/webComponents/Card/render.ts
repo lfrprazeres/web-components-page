@@ -70,6 +70,7 @@ export function createCard(
           slot="image"
           src="${currentImageURL}"
           alt="${name}"
+          loading="lazy"
         />`
         : `<span slot="image" ></span>`
       }
