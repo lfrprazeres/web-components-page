@@ -55,6 +55,8 @@ export function createCard(
     "de-AT",
     dateOptions
   );
+  const currentImageURL = primaryImage?.url || images[0]?.url;
+
   root.innerHTML += `
     <tr-card
       show="${show || true}"
@@ -63,11 +65,14 @@ export function createCard(
       tour="${length}"
       reviews="${reviews || 0}"
     >
-      <img
-        slot="image"
-        src="${primaryImage?.url || images[0]?.url}"
-        alt="${name}"
-      />
+      ${currentImageURL
+        ? `<img
+          slot="image"
+          src="${currentImageURL}"
+          alt="${name}"
+        />`
+        : ""
+      }
       <h2 slot="name"> ${name} </h2>
       <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
       <p slot="description"> "${description}" </p>
