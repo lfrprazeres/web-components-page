@@ -1,25 +1,19 @@
-import styles from './styles.scss';
+import starsTemplate from './template.html';
 
 import fillStar from './fillStar.svg';
 import halfStar from './halfStar.svg';
 import outlineStar from './outlineStar.svg';
 
-const starsTemplate = document.createElement('template');
+const template = document.createElement('template');
 
-starsTemplate.innerHTML = `
-  <div class="stars-container">
-  </div>
-  <style>
-    ${styles}
-  </style>
-`;
+template.innerHTML = starsTemplate;
 
 export class Stars extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     const rating = parseFloat(this.getAttribute('rating'));
-    const stars = starsTemplate.content.cloneNode(true);
+    const stars = template.content.cloneNode(true);
     this.shadowRoot.appendChild(stars);
     Array.from({ length: 5 }, (_, index) => {
       const id = index + 1;

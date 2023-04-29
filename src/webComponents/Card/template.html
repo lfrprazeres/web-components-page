@@ -1,0 +1,99 @@
+<div class="card-container">
+  <div class="card-image">
+    <slot name="image"></slot>
+  </div>
+  <div class="card-content">
+    <div class="card-description">
+      <slot
+        name="name"
+        class="card-description-title"
+      >
+        <div class="skeleton skeleton-text"> </div>
+      </slot>
+      <div class="card-description-stars">
+        <slot name="stars"></slot>
+      </div>
+      <div class="card-description-text">
+        <slot
+          name="description"
+        ></slot>
+      </div>
+      <div class="card-details">
+        <div class="card-details-item">
+          <h3>
+            DESTINATIONS
+          </h3>
+          <div class="card-details-item--operator">
+            <slot name="destinations">
+              <div class="skeleton skeleton-text"></div>
+            </slot>
+            <div class="card-details-item--moreDestinations">
+              <slot name="more-destinations"></slot>
+            </div>
+          </div>
+        </div>
+        <div class="card-details-item">
+          <h3>
+            STARTS/ ENDS IN
+          </h3>
+          <div class="card-details-item--operator">
+            <slot name="starts-ends">
+              <div class="skeleton skeleton-text"></div>
+            </slot>
+          </div>
+        </div>
+        <div class="card-details-item">
+          <h3>
+            OPERATOR
+          </h3>
+          <div class="card-details-item--operator">
+            <slot name="operator">
+              <div class="skeleton skeleton-text"></div>
+            </slot>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <div class="card-actions-values">
+        <div class="card-actions-values--duration">
+          <h3>
+            Duration
+          </h3>
+          <slot name="duration"></slot>
+        </div>
+        <div class="card-actions-values--from">
+          <h3>
+            From
+          </h3>
+          <slot name="from"></slot>
+        </div>
+      </div>
+      <div class="card-actions-dates">
+        <div class="card-actions-dates--item">
+          <div class="card-actions-dates--date">
+            <slot name="firstDate"> </slot>
+          </div>
+          <div class="card-actions-dates--availability">
+            <slot name="firstAvailability"></slot>
+          </div>
+        </div>
+        <div class="card-actions-dates--item">
+          <div class="card-actions-dates--date">
+            <slot name="secondDate"></slot>
+          </div>
+          <div class="card-actions-dates--availability">
+            <slot name="secondAvailability"></slot>
+          </div>
+        </div>
+      </div>
+      <button class="card-actions-button">
+        View Tour
+      </button>
+    </div>
+  </div>
+  <style>
+    @import "card.css";
+    @import "normalize.css";
+  </style>
+</div>

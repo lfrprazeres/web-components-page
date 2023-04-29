@@ -11,7 +11,7 @@ const handleAvailability = (availability: number = 0): string[] => ([
   `${availability <= 5 ? 'red' : 'black'}`
 ]);
 
-export function createCard(root: string, props: CardProps, show?: boolean): void {
+export function createCard(root: Element, props: CardProps, show?: boolean): void {
   const {
     name,
     images,
@@ -49,7 +49,7 @@ export function createCard(root: string, props: CardProps, show?: boolean): void
     "de-AT",
     dateOptions
   );
-  $(`#${root}`).append(`
+  $(root).append(`
     <tr-card
       show="${show || true}"
       name="${name}"

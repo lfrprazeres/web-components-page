@@ -1,0 +1,21 @@
+<div class="filters-container">
+  <tr-select label="Sort by" id="sortBy">
+    <option value="">Popularity</option>
+    <option value="lowest"> Lowest Price </option>
+    <option value="highest"> Highest Price </option>
+    <option value="longest"> Longest Tour </option>
+    <option value="shortest"> Shortest Tour </option>
+  </tr-select>
+  <tr-select label="Filter by" id="filterBy">
+    <option value="">Departure Date</option>
+  </tr-select>
+</div>
+<div id="cards-container">
+  <tr-card />
+  <tr-card />
+  <tr-card />
+</div>
+<style>
+  @import "cardList.css";
+  @import "normalize.css";
+</style>
