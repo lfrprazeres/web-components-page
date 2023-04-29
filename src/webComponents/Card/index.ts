@@ -1,7 +1,8 @@
 import cardTemplate from './template.html';
+import style from './styles.scss';
+
 const template = document.createElement("template");
-import './styles.scss';
-template.innerHTML = cardTemplate;
+template.innerHTML = cardTemplate + `<style>${style}</style>`;
 
 export class Card extends HTMLElement {
   constructor() {

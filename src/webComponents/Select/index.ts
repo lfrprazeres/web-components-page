@@ -1,7 +1,9 @@
 import selectTemplate from './template.html';
+import styles from './styles.scss';
+
 const template = document.createElement("template");
 
-template.innerHTML = selectTemplate;
+template.innerHTML = selectTemplate + `<style>${styles}</style>`;
 
 export class Select extends HTMLElement {
   constructor() {

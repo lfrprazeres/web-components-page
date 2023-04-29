@@ -6,10 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     normalize: path.resolve(__dirname, '..', 'src', 'normalize.css'),
-    card: path.resolve(__dirname, '..', 'src', 'webComponents', 'Card', 'styles.scss'),
-    cardList: path.resolve(__dirname, '..', 'src', 'webComponents', 'CardList', 'styles.scss'),
-    select: path.resolve(__dirname, '..', 'src', 'webComponents', 'Select', 'styles.scss'),
-    stars: path.resolve(__dirname, '..', 'src', 'webComponents', 'Stars', 'styles.scss'),
     webComponents: path.resolve(__dirname, '..', 'src', 'webComponents', 'index.ts'),
     index: path.resolve(__dirname, '..', 'src', 'index.ts'),
   },
@@ -35,10 +31,30 @@ module.exports = {
       },
       {
         test: /\.(s[ac]ss|css)$/i,
+        exclude: [
+          path.resolve(__dirname, '..', 'src', 'webComponents')
+        ],
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader",
+        ],
+      },
+      {
+        test: /\.(s[ac]ss)$/i,
+        include: [
+          path.resolve(__dirname, '..', 'src', 'webComponents')
+        ],
+        use: [
+          "raw-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'node_modules')]
+              }
+            }
+          }
         ],
       },
       {
@@ -53,12 +69,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: ({ chunk }) => {
-        console.log('chunk: ', chunk);
-        return `${chunk.name.replace('/js/', '/css/')}.css`
-      },
-    }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', 'public', 'index.html'),
     }),

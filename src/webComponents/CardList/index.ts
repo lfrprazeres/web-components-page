@@ -1,12 +1,14 @@
 import { getSearchResults } from "services/searchPage";
 import { createCard } from "components/Card";
 import cardListTemplate from "./template.html";
+import styles from './styles.scss';
+
 const template = document.createElement("template");
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString("de-AT", { month: "short", year: "numeric" });
 
-template.innerHTML = cardListTemplate;
+template.innerHTML = cardListTemplate + `<style>${styles}</style`;
 
 export class CardList extends HTMLElement {
   constructor() {
