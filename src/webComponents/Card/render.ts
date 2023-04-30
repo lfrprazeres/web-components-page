@@ -75,7 +75,7 @@ export function createCard(
       />`
         : `<span slot="image" ></span>`
     }
-    <h2 slot="name"> ${name} </h2>
+    <h2 slot="name" data-testid="card-title"> ${name} </h2>
     <tr-stars-rate slot="stars" rating="${rating}" reviews="${reviews}"></tr-stars-rate>
     <p slot="description"> "${description}" </p>
     <p slot="operator"> ${operator_name} </p>

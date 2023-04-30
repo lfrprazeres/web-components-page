@@ -1,4 +1,7 @@
 node_modules/
 dist/
 yarn-error.log
-lighthouse-result.html/
+lighthouse-result.html
+/test-results/
+/playwright-report/
+/playwright/.cache/

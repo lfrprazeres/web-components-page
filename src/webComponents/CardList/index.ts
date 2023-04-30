@@ -14,7 +14,6 @@ export class CardList extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-
     const card = template.content.cloneNode(true);
     shadow.append(card);
   }
@@ -78,7 +77,6 @@ export class CardList extends HTMLElement {
             return aReviews < bReviews ? 1 : -1;
         }
       });
-
       for (const card of sortedCards) {
         this.shadowRoot.querySelector("#cards-container").append(card);
       }
