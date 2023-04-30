@@ -9,8 +9,20 @@ export class Card extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
 
-    const cardList = template.content.cloneNode(true);
-    shadow.append(cardList);
+    const card = template.content.cloneNode(true);
+    shadow.append(card);
+  }
+
+  connectedCallback() {
+    const discount = this.getAttribute('discount');
+    if (discount !== 'undefined') {
+      const discountContainer = document.createElement('div');
+      discountContainer.classList.add('card-container-discount');
+      const div = document.createElement('div');
+      div.innerHTML = discount;
+      discountContainer.append(div);
+      this.shadowRoot.querySelector('.card-container').append(discountContainer);
+    };
   }
   
   static get observedAttributes() {

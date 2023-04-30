@@ -6,10 +6,36 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto 20px auto;
+    position: relative;
     width: 100%;
     @media screen and (min-width: $screen-md) {
       flex-direction: row;
       height: 210px;
+    }
+    &-discount {
+      color: white;
+      display: none;
+      position: absolute;
+      right: 1px;
+      top: 1px;
+      width: 0;
+      height: 0;
+      border-color: transparent $red transparent transparent;
+      border-top: 45px solid red;
+      border-left: 45px solid transparent;
+      @media screen and (min-width: $screen-md) {
+        display: block;
+      }
+      div {
+        color: white;
+        font-size: 12px;
+        height: 45px;
+        position: relative;
+        top: -32px;
+        left: -40px;
+        transform: rotate(45deg);
+        width: 45px;
+      }
     }
   }
   &-image {
@@ -18,7 +44,7 @@
     max-width: 100%;
     overflow: hidden;
     @media screen and (min-width: $screen-md) {
-      background-color: $grey-400;
+      background-color: $grey-100;
       max-height: none;
       width: 320px;
       ::slotted(img) {
@@ -30,7 +56,7 @@
     ::slotted(img) {
       max-width: 100%;
       max-height: 100%;
-      object-fit: contain
+      object-fit: contain;
     }
   }
   &-content {
@@ -138,7 +164,8 @@
             font-size: 0.75rem;
           }
         }
-        p,::slotted(*) {
+        p,
+        ::slotted(*) {
           color: black;
           font-size: 1.2rem;
           font-weight: bold;
@@ -160,7 +187,8 @@
             margin-top: 0;
           }
         }
-        p,::slotted(*) {
+        p,
+        ::slotted(*) {
           color: $green;
           font-size: 2rem;
           font-weight: bold;
@@ -215,6 +243,7 @@
 }
 
 .skeleton-image {
+  background-color: $grey-400;
   height: 245px;
   width: 100%;
   @media screen and (min-width: $screen-md) {

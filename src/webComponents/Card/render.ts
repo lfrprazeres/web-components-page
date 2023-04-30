@@ -55,15 +55,17 @@ export function createCard(
     "de-AT",
     dateOptions
   );
+  const discount = firstDateData?.discount || secondDateData?.discount;
   const currentImageURL = primaryImage?.url || images[0]?.url;
-
   const cardElement = document.createElement("tr-card");
-
+  
   cardElement.setAttribute("show", `${show || true}`);
   cardElement.setAttribute("name", `${name}`);
   cardElement.setAttribute("price", `${firstDateData?.eur || 0}`);
   cardElement.setAttribute("tour", `${length}`);
   cardElement.setAttribute("reviews", `${reviews || 0}`);
+  cardElement.setAttribute("discount", discount);
+
   cardElement.innerHTML = `
     ${
       currentImageURL
